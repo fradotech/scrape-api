@@ -20,7 +20,6 @@ export class NaverScrapelessIntegration {
           input: {
             storeId: params.storeId,
             productId: params.productId,
-            channelUid: params.channelUid,
           },
         },
         {

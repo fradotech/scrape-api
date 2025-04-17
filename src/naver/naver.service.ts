@@ -33,16 +33,10 @@ export class NaverService {
       }
 
       const params = new URLSearchParams(url.search);
-      const channelUid = params.get("channelUid");
-
-      if (!channelUid) {
-        throw new Error("Channel UID not found in URL");
-      }
 
       const productParams: NaverProductParams = {
         storeId,
         productId,
-        channelUid,
       };
 
       naverProductParamsSchema.parse(productParams);
@@ -56,9 +50,7 @@ export class NaverService {
     }
   }
 
-  async get(
-    urlDto: NaverUrlDto
-  ): Promise<NaverScrapelessResponse> {
+  async get(urlDto: NaverUrlDto): Promise<NaverScrapelessResponse> {
     const params = this.paramsFromUrl(urlDto);
     return await this.naverScrapelessIntegration.scrapeNaverProduct(params);
   }
