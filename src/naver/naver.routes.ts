@@ -10,9 +10,4 @@ router.post(
   asyncHandler(naverController.get.bind(naverController))
 );
 
-router.post(
-  "/product/test",
-  asyncHandler(naverController.test.bind(naverController))
-);
-
 export default router;

@@ -26,24 +26,4 @@ export class NaverController {
 
     res.status(200).json(response);
   }
-
-  async test(req: Request, res: Response): Promise<void> {
-    const results: string[] = [];
-    for (let i = 0; i < 20; i++) {
-      try {
-        const urlDto = new NaverUrlDto(payloads[i]);
-        const productDetails = await this.naverService.get(urlDto);
-        results.push(productDetails.name as string);
-      } catch (error) {
-        results.push(`Error url: ${payloads[i]}`);
-      }
-    }
-
-    const response: ApiResponse<string[]> = {
-      success: true,
-      data: results,
-    };
-
-    res.status(200).json(response);
-  }
 }

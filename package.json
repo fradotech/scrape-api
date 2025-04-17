@@ -1,7 +1,7 @@
 {
-  "name": "scrape-naver",
+  "name": "scrape-api",
   "version": "1.0.0",
-  "description": "API for scraping Naver product details",
+  "description": "API for scraping",
   "main": "dist/index.js",
   "scripts": {
     "start": "node dist/index.js",
