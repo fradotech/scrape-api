@@ -1,5 +1,6 @@
 import express, { Express, Request, Response, NextFunction } from "express";
 import naverRoutes from "./naver/naver.routes";
+import temuRoutes from "./temu/temu.routes";
 import { NotFoundError } from "./infrastructure/error";
 import { errorHandler } from "./infrastructure/error-handler";
 
@@ -20,6 +21,7 @@ export class App {
 
   private setupRoutes(): void {
     this.app.use("/api/naver", naverRoutes);
+    this.app.use("/api/temu", temuRoutes);
 
     this.app.get("/health", (_req: Request, res: Response) => {
       res.status(200).json({ status: "ok" });

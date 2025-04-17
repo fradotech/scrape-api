@@ -52,6 +52,6 @@ export class NaverService {
 
   async get(urlDto: NaverUrlDto): Promise<NaverScrapelessResponse> {
     const params = this.paramsFromUrl(urlDto);
-    return await this.naverScrapelessIntegration.scrapeNaverProduct(params);
+    return await this.naverScrapelessIntegration.product(params);
   }
 }
