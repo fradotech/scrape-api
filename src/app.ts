@@ -1,5 +1,7 @@
-import express, { Express, Request, Response } from "express";
+import express, { Express, Request, Response, NextFunction } from "express";
 import naverRoutes from "./naver/naver.routes";
+import { NotFoundError } from "./infrastructure/error";
+import { errorHandler } from "./infrastructure/error-handler";
 
 export class App {
   private app: Express;
@@ -8,6 +10,7 @@ export class App {
     this.app = express();
     this.setupMiddlewares();
     this.setupRoutes();
+    this.app.use(errorHandler);
   }
 
   private setupMiddlewares(): void {
@@ -22,11 +25,8 @@ export class App {
       res.status(200).json({ status: "ok" });
     });
 
-    this.app.use((_req: Request, res: Response) => {
-      res.status(404).json({
-        success: false,
-        message: "Not found",
-      });
+    this.app.all("*", (_req: Request, _res: Response) => {
+      throw new NotFoundError("Endpoint not found");
     });
   }
 

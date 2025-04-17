@@ -1,11 +1,13 @@
 import { Router } from "express";
 import { NaverController } from "./naver.controller";
+import { asyncHandler } from "../infrastructure/async-handler";
 
-const router: import("express").Router = Router();
+const router: Router = Router();
 const naverController = new NaverController();
 
-router.post("/product", (req, res) =>
-  naverController.get(req, res)
+router.post(
+  "/product",
+  asyncHandler(naverController.get.bind(naverController))
 );
 
 export default router;

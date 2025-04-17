@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 export const naverUrlSchema = z.object({
-  url: z.string().url().startsWith("https://brand.naver.com/"),
+  url: z.string().url(),
 });
 
 export const naverProductParamsSchema = z.object({

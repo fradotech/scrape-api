@@ -1,12 +1,13 @@
 import axios from "axios";
 import { NaverProductParamsDto } from "./naver.dto";
 import { NaverScrapelessResponse } from "./naver.type";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 export class NaverScrapelessIntegration {
-  private readonly baseUrl: string =
-    "https://api.scrapeless.com/api/v1/scraper/request";
-  private readonly apiToken: string =
-    "sk_wsGRLsueQZPg17pVLdJOQfdcOHrW90UQn10jjANG1iMpnx3xtuBBBmfFW0fJWG7q";
+  private readonly baseUrl: string = `${process.env.SCRAPELESS_BASE_URL}/scraper/request`;
+  private readonly apiToken: string = process.env.SCRAPELESS_API_KEY || "";
 
   async scrapeNaverProduct(
     params: NaverProductParamsDto
