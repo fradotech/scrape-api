@@ -33,7 +33,7 @@ export class NaverService {
       }
 
       const params = new URLSearchParams(url.search);
-      const channelUid = params.get("NaPm");
+      const channelUid = params.get("channelUid");
 
       if (!channelUid) {
         throw new Error("Channel UID not found in URL");
